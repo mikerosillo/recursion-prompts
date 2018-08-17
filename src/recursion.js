@@ -115,8 +115,17 @@ return (string === "") ? "" : reverse(string.substr(1)) + string.charAt(0);
 reverse(string);
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
-};
 
+  string = string.split(' ').join('');
+
+  if (string.length === 0 || string.length === 1) {
+     return true;
+   }
+  if (string[0].toLowerCase() !== string[string.length-1].toLowerCase()) {
+     return false;
+   }
+  return palindrome(string.substr(1, string.length - 2));
+};
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
 // modulo(5,2) // 1
@@ -128,6 +137,11 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
 var multiply = function(x, y) {
+  if(y === 0){
+    return 0;
+  }else{
+    return x + multiply(x,y -1)
+  }
 };
 
 // 13. Write a function that divides two numbers without using the / operator or
