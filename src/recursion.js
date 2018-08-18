@@ -137,16 +137,28 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
 var multiply = function(x, y) {
-  if(y === 0){
+  if(y === 0){ //base case
     return 0;
   }else{
-    return x + multiply(x,y -1)
+    return x + multiply(x,y -1) //recursive case
   }
 };
 
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods.
 var divide = function(x, y) {
+//  <!--'base cases'-->
+ if (y === 0) { return NaN; }
+ if (x === 0) { return 0; }
+ if (x < 0 && y > 0 && -x < y || x < -y) { return 0; }
+ if (x > 0 && y > 0 && x < y) { return 0; }
+
+// <!--'recursive cases'-->
+ if (x > 0 && y > 0) {
+   return 1 + divide(x - y, y);
+ } else {
+   return -1 + divide(x + y, y);
+ }
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers. The GCD of two
